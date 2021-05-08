@@ -20,7 +20,7 @@
         </h1>
             </div>
              <div class="col-md-5">
-                <form id="form1"  action="./Todo.html">
+                <form id="form1"  action="./Todo.html" onsubmit=" return validate()">
                     <h2>LOGiN</h2><br>
                     <label>USER NAME:</label>
                     <input type="text" id="username">
@@ -28,8 +28,9 @@
                     <br>
                     <label>PASSWORD:</label>
                     <input type="password" id="password"><br>
-                   <br>
+            
                     <p id="message"></p>
+                    
                     <button id="callback-btn">LogIn</button>
                 </form>
              </div>

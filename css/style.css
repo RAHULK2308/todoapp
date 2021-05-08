@@ -45,3 +45,12 @@ font-size: 1em;
 .navbar-brand{
     margin-left: 8%;
 }
+
+#result{
+    margin: 40px;
+    padding: 5px;
+}
+
+#tableBody{
+    margin: 20px;
+}
