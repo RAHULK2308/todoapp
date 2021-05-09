@@ -1,33 +1,50 @@
-var loadAjax = function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET","https://jsonplaceholder.typicode.com/todos",true);
-    xhr.send();
 
-    xhr.onreadystatechange = function(){
 
-        if(this.readyState == 4 && this.status == 200){
-            
-            var htmlData = JSON.parse(xhr.responseText);
-            var htmlContent =""
-            for(var i =0; i<htmlData.length; i++){
-                var currentRecord = htmlData[i];
-                htmlContent += "<tr><td>"+currentRecord.id+"</td><td>"+currentRecord.title+"</td><td><input type='checkbox' id='test' value=''></td></tr>"
-                document.getElementById("tableBody").innerHTML = htmlContent;
-                if (currentRecord.completed==true){
-                    var input = document.getElementById("test");
-                    input.setAttribute('value', true);
-                    input.setAttribute('disabled', true);
-                    var parent = document.getElementById("tableBody");
-                    parent.appendChild(input);
-                    console.log(parent)
-               }
-                }
-            }
-            
+const main = document.getElementById("main");
 
-            
-        }
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((response) => response.json())
+  .then((todos) => main.innerHTML = getTodo(todos));
+  const getTodo = (todos) => {
+  const names = todos
+    .map((todos) => `<tr><td class="tbln">ID :${todos.id}  <input type="checkbox" onclick=checkcount()  value=${todos.title} ${check(todos.completed)}></tr></td><tr><td> Title :${todos.title}</td></tr>`)
+    
+return `<th>${names}</th>`;
+};
+function check(val){
+
+if(val){
+    return "checked"
+} else {
+    return null ;
+}
+}
+ function checkcount(){
+
+    function Display() {
+        alert("Congratulations...! You completed 5 Tasks")
     }
-
-
+    
+    let Count = new Promise(function(Resolve, Reject) {
+        var Checkbox = document.querySelectorAll('input[type="checkbox"]:checked');
+        x=Checkbox.length;
+        
    
+        if (x == 95) {
+        Resolve("OK");
+        } 
+    });
+    
+    Count.then(
+        function() {
+            Display();
+        }
+    );
+}
+
+   $("#link2").click(function(){
+        alert("SuccessFully Logout");
+      });
+    
+    
+    
